@@ -14,10 +14,11 @@
     
         Counter value: {{ counter }}
     
-        <br><button v-on:click="incCounter()">Increment</button>
-        <br><button @click="decCounter()">Decrement</button>   <!-- this is alternate format -->
+        <br><button v-on:click="incCounter(2, $event)">Increment</button>   <!-- $event is a protected name -->
+        <br>
+        <br><button @click="decCounter">Decrement</button>   <!-- this is alternate format -->
         
-        
+        <p v-on:mousemove="updateCoordinates">Coordinates: {{ x  }}, {{ y }} </p>   <!--- no need for parenthesis() in function name -->
       </div>
   
   
@@ -29,16 +30,23 @@
        
        data: {
          name: 'Ruel',
-         counter: 0
+         counter: 0,
+         x: 0,
+         y: 0
        },
        
        methods: {
-         incCounter: function(){
-           this.counter = this.counter + 1;
+         incCounter: function(val, event){
+           this.counter = this.counter + val + event.clientX;
          },
          
          decCounter: function(){
            this.counter -= 1;
+         },
+         
+         updateCoordinates: function(event){
+           this.x = event.clientX;        // don't freaking forget "this"
+           this.y = event.clientY;        // don't freaking forget "this"
          }
          
          
