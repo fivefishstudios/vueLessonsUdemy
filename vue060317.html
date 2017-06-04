@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Vue Lesson 06/02/17 </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .boldlink{
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+</head>
+<body>
+  
+  <div id="app" >
+  
+    <p>The variable content is {{ title }}</p>
+    <p v-bind:class="myclass">
+      {{ sayHello() }}.
+      Today is {{ sayToday() }}
+    </p>
+    <a v-bind:href="link">Go to Google</a>
+    <hr>
+    <p v-html="boldtext"></p>
+    <p>Random number is: {{ generateRandomNumber() }}</p>
+  
+  </div>
+
+</body>
+  <script>
+    new Vue({
+      el: '#app',
+      
+      data: {
+        title: 'Hello World - ',
+        name: 'Ruel Oquindo',
+        link: 'http://www.google.com',   // when you v-bind:, don't use {{ }}`
+        myclass: 'boldlink',        // use v-bind to bind html parameters, v-bind:class="myclass"
+        boldtext: '<b>Bold</b>',     // use v-html="variable" to pass text to be interpreted as html
+        randomNumber: ''
+        
+      },
+      
+      methods: {
+        
+        sayHello: function(){
+          return 'Hello!!! ' + this.name;   // this. keyword is required to access this Vue's data 
+        }
+        
+        ,
+        
+        sayToday: function() {
+          return 'Saturday';
+        }
+        
+        , 
+        
+        generateRandomNumber: function(){
+          return (Math.random() * 10).toFixed(2);
+        }
+        
+      }
+      
+    })
+  </script>
+</html>

@@ -1,0 +1,50 @@
+<html>
+  <head>
+     <script src="https://unpkg.com/vue"></script>
+  </head>
+  <style>
+    button{
+      font-size: 1.2em;
+    }
+  </style>
+
+  <body>
+  
+      <div id="app">
+    
+        Counter value: {{ counter }}
+    
+        <br><button v-on:click="incCounter()">Increment</button>
+        <br><button @click="decCounter()">Decrement</button>   <!-- this is alternate format -->
+        
+        
+      </div>
+  
+  
+  </body>
+  
+  <script>
+     new Vue({
+       el: '#app',
+       
+       data: {
+         name: 'Ruel',
+         counter: 0
+       },
+       
+       methods: {
+         incCounter: function(){
+           this.counter = this.counter + 1;
+         },
+         
+         decCounter: function(){
+           this.counter -= 1;
+         }
+         
+         
+       }
+     }) // end of Vue
+  
+  </script>
+  
+</html>
