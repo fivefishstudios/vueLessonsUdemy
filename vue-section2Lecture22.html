@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>About Vue Computed Properties</title>
+      <meta charset="UTF-8">
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+  <div id="app">
+  
+    <p>My name is {{ name }} </p>
+    
+    <form>
+      <input type="text" v-model="name" size="50">
+    </form>
+  
+    Result: {{ result() }}   <!-- this is calling a function/method, so needs ()  -->
+    <br>
+    Output: {{ output }}  <!-- this is like a variable, not a function/method -->
+  
+  
+  </div>
+  
+  <script>
+    new Vue({
+      el: '#app',
+      
+      data: {
+        name: 'Ruel',
+        
+      },
+      
+      computed: {
+        output: function() {    // this only gets executed when this.name is changed 
+          return this.name + ' Oquindo';
+        }
+      }
+      ,
+       
+      methods: {
+        result(){     // this always gets executed when DOM is refreshed. 
+          return this.name + ' Oquindo';
+        }  
+      }
+      
+    })
+  </script>
+
+  </body>
+</html>
